@@ -1,0 +1,54 @@
+<div *ngIf="productsInCart && productsInCart.length > 0; else noItemsInCart" class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 flex-container">
+		<div class="container">
+			<div *ngFor="let product of productsInCart" class="bordered-product">
+				<div class="row">
+					<div class="col-md-7" [innerText]="product.name"></div>
+					<div class="col-md-2">
+						<button (click)="addItem(product)" class="round-button">+</button>
+					</div>
+					<div class="col-md-1" [innerText]="product.count"></div>
+					<div class="col-md-2">
+						<button (click)="removeItem(product)" class="round-button">-</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bordered-product" style="align-self: center;">
+			<ng-container *ngFor="let product of productsInCart">
+				<div class="row half-margin-up-down">
+					<div class="col-md-9">{{product.name + "  " + "*" + product.count + "  "}}</div>
+					<div class="col-md-3">:{{product.price * product.count | currency:product.selectedCurrency:'symbol-narrow'}}</div>
+				</div>
+			</ng-container>
+			<div class="row base-margin-up-down">
+				<div class="col-md-9">Total</div>
+				<div class="col-md-3">{{":" + totalValue}}</div>
+			</div>
+			<hr>
+			<div class="row base-margin-up-down">
+				<div class="col-md-9">Discount</div>
+				<div class="col-md-3">{{":" + "10%"}}</div>
+			</div>
+			<hr>
+			<div class="row base-margin-up-down">
+				<div class="col-md-9">SUB TOTAL</div>
+				<div class="col-md-3">{{":"}}{{totalValue - (totalValue / 10 | number:'1.0-2')}}</div>
+			</div>
+			<button class="pull-right checkout-button" (click)="checkout()">Checkout</button>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+<ng-template #noItemsInCart>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 bordered-product">
+			<h2>Your Cart is empty.</h2>
+			<h4>Please add some items and checkout</h4>
+			<button class="base-margin pull-right" (click)="goToHome()">Go To Home</button>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</ng-template>

@@ -1,0 +1,40 @@
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	margin: 5px 100px;
+  }
+  
+.flex-container > div {
+	background-color: #f1f1f1;
+	width: 225px;
+	margin: 15px;
+	text-align: center;
+	line-height: 225px;
+	border: 2px solid black;
+  }
+
+.flex-container-col {
+	display: flex;
+	flex-direction: column;
+	line-height: unset !important;
+  }
+  
+.flex-container-col > div {
+	margin: 10px;
+	text-align: left;
+  }
+
+.flex-container-col > div:first-child {
+	margin: 10px;
+	text-align: center;
+	}
+
+.product-img {
+	border: 1px solid grey;
+	font-size: 80px;
+}
+
+a {
+	cursor: pointer;
+}

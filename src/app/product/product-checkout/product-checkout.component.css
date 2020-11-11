@@ -1,0 +1,42 @@
+.flex-container {
+	display: flex;
+}
+  
+.flex-container > div {
+	margin: 10px;
+	text-align: center;
+	line-height: 25px;
+	width: 50%;
+}
+
+.bordered-product {
+	border: 2px solid black;
+	padding: 3px;
+	margin: 10px;
+}
+
+.round-button {
+	border-radius: 50%;
+	font-size: 14px;
+	border: 1px solid coral;
+	padding: 1px;
+	width: 30px;
+}
+
+.base-margin {
+	margin: 20px;
+}
+
+.half-margin-up-down {
+	margin: 10px 0;
+}
+
+.base-margin-up-down {
+	margin: 20px 0;
+}
+
+.checkout-button {
+	width: 200px;
+	background: coral;
+	color: white;
+}

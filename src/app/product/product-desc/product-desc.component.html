@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-7"></div>
+	<div class="col-md-2">
+		<form [formGroup]="sortForm" class="form-group">
+			<label>Sort Based On:</label>
+			<select class="form-control" formControlName="categoryDropdown">
+				<option *ngFor="let option of categoryOptions" [value]="option">{{option}}</option>
+			</select>
+		</form>
+	</div>
+	<div class="col-md-2">
+		<form [formGroup]="sortForm" class="form-group">
+			<label>Sort Based On:</label>
+			<select class="form-control" formControlName="sortDropdown">
+				<option *ngFor="let option of sortByOptions" [value]="option.value">{{option.name}}</option>
+			</select>
+		</form>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+<div class="flex-container">
+	<ng-container *ngFor="let product of products">
+		<ng-container *ngTemplateOutlet="productTab; context: {productDetails: product}"></ng-container>
+	</ng-container>
+</div>
+
+<ng-template #productTab let-item="productDetails">
+	<div class="flex-container-col">
+		<div class="product-img">X</div>
+		<div class="row">
+			<label>Product Name: </label>
+			<span>{{" " + item.name}}</span>
+		</div>
+		<div class="row">
+			<label>Price: </label>
+			<span>{{"  " + item.price |currency:item.selectedCurrency:'symbol-narrow'}}</span>
+			<div>
+				<select (change)="changeInCurrency($event?.target?.value, item)">
+					<option *ngFor="let option of currencyOptions" [value]="option?.value">{{option?.name}}</option>
+				</select>
+			</div>
+		</div> 
+		<div><a class="pull-right" (click)="addItemToCart(item)">Add To Cart</a></div>
+	</div>
+</ng-template>
